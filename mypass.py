@@ -29,7 +29,8 @@ def main():
             if len_files== 1:
                 file = files[0]
             elif len_files == 0:
-                print("Error: mps file not found!")
+                option = input("Error: mps file not found! \nCreate new mps file (y/n):")
+                if(option.lower() == "y"): setup()
             else:
                 table = PrettyTable(["No.", "MPS File"])
                 counter = 0
@@ -43,7 +44,7 @@ def main():
 
         password = args.password 
         if  password == None:
-            password = getpass.getpass()
+            password = pwinput("",'*')
         if args.new:
             new(nameFile=file, app=args.app, password=password)
         if args.app:
